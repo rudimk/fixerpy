@@ -3,4 +3,4 @@ python:
     - "2.7"
 
 install: "pip install requests pytest"
-script: "pytest tests/tests.py"
+script: "pytest tests.py"
