@@ -19,3 +19,23 @@ def testLatestRates():
         assert True
     else:
         assert False, "The exchange rates are missing."
+
+def testLatestRatesWithBase():
+    c = Converter()
+    latestRates = c.getLatestRates(baseCurrency='USD')
+    if latestRates:
+        assert True
+    else:
+        assert False, "Current forex rates not retrieved."
+    if 'date' in latestRates:
+        assert True
+    else:
+        assert False, "The date is missing."
+    if latestRates['base'] == 'USD':
+        assert True
+    else:
+        assert False, "The base rate is USD, overriding the default EUR."
+    if 'rates' in latestRates:
+        assert True
+    else:
+        assert False, "The exchange rates are missing."
