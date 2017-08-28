@@ -21,8 +21,8 @@ def testLatestRates():
         assert False, "The exchange rates are missing."
 
 def testLatestRatesWithBase():
-    c = Converter()
-    latestRates = c.getLatestRates(baseCurrency='USD')
+    c = Converter(baseCurrency='USD')
+    latestRates = c.getLatestRates()
     if latestRates:
         assert True
     else:
@@ -41,8 +41,8 @@ def testLatestRatesWithBase():
         assert False, "The exchange rates are missing."
 
 def testHistoricalRates():
-    c = Converter()
-    historicalRates = c.getHistoricalRates(date='2017-01-01')
+    c = Converter(queryDate='2017-01-01')
+    historicalRates = c.getHistoricalRates()
     if historicalRates:
         assert True
     else:
@@ -61,8 +61,8 @@ def testHistoricalRates():
         assert False, "The exchange rates are missing."
 
 def testHistoricalRatesWithBase():
-    c = Converter()
-    historicalRates = c.getHistoricalRates(date='2017-01-01', baseCurrency='USD')
+    c = Converter(queryDate='2017-01-01', baseCurrency='USD')
+    historicalRates = c.getHistoricalRates()
     if historicalRates:
         assert True
     else:
