@@ -39,3 +39,23 @@ def testLatestRatesWithBase():
         assert True
     else:
         assert False, "The exchange rates are missing."
+
+def testHistoricalRates():
+    c = Converter()
+    historicalRates = c.getHistoricalRates(date='2017-01-01')
+    if historicalRates:
+        assert True
+    else:
+        assert False, "Historical forex rates not retrieved."
+    if 'date' in historicalRates:
+        assert True
+    else:
+        assert False, "The date is missing."
+    if historicalRates['base'] == 'EUR':
+        assert True
+    else:
+        assert False, "The base rate is not EUR."
+    if 'rates' in historicalRates:
+        assert True
+    else:
+        assert False, "The exchange rates are missing."
