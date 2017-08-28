@@ -34,7 +34,7 @@ def testLatestRatesWithBase():
     if latestRates['base'] == 'USD':
         assert True
     else:
-        assert False, "The base rate is USD, overriding the default EUR."
+        assert False, "The base rate isn't USD."
     if 'rates' in latestRates:
         assert True
     else:
@@ -55,6 +55,26 @@ def testHistoricalRates():
         assert True
     else:
         assert False, "The base rate is not EUR."
+    if 'rates' in historicalRates:
+        assert True
+    else:
+        assert False, "The exchange rates are missing."
+
+def testHistoricalRatesWithBase():
+    c = Converter()
+    historicalRates = c.getHistoricalRates(date='2017-01-01', baseCurrency='USD')
+    if historicalRates:
+        assert True
+    else:
+        assert False, "Historical forex rates not retrieved."
+    if 'date' in historicalRates:
+        assert True
+    else:
+        assert False, "The date is missing."
+    if historicalRates['base'] == 'USD':
+        assert True
+    else:
+        assert False, "The base rate isn't USD."
     if 'rates' in historicalRates:
         assert True
     else:
